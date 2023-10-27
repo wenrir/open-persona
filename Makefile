@@ -34,11 +34,21 @@ build:
 clean:
 	@$(compose) images -q | xargs -r docker rmi
 
+.PHONY: logs
+## Log ui container
+logs:
+	@docker logs -f ui
+
 .PHONY: build-prod
 ## Build all development images
 build-prod:
 	@docker compose --file $(PROJECT_DIR)/ui.prod.yml build
 
+.PHONY: restart
+## Restart development contains
+restart:
+	$(MAKE) stop
+	$(MAKE) start
 
 .PHONY: help
 help:
