@@ -2,15 +2,16 @@
 
 set -e
 
-
 if [[ "$1" == "dev" ]];
 then
     cd /app
+    echo "=== Start npm development env ==="
     npm install
     npm run dev
 elif [[ "$1" == "build" ]];
 then
    cd /app
+    echo "=== Build component ==="
    npm install
    npm run build
    exit

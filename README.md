@@ -26,3 +26,10 @@ example
 ## Build all development images
 `make build-prod`
 
+## Log ui container
+
+`make logs`
+
+## Restart development contains
+
+`make restart`
