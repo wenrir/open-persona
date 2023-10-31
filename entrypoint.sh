@@ -11,9 +11,16 @@ then
 elif [[ "$1" == "build" ]];
 then
    cd /app
-    echo "=== Build component ==="
+    echo "=== build component ==="
    npm install
    npm run build
+   exit
+elif [[ "$1" == "lint" ]];
+then
+   cd /app
+   echo "=== Lint ==="
+   npm install
+   npx prettier --write --plugin prettier-plugin-svelte .
    exit
 else
    if [ "${1#-}" != "${1}" ] || [ -z "$(command -v "${1}")" ] || { [ -f "${1}" ] && ! [ -x "${1}" ]; }; then
