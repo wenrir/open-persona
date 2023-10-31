@@ -15,6 +15,7 @@ setup:
 lint: 
 	@$(compose) run --rm ui lint
 
+
 .PHONY: start
 ## Start docker services
 start:
