@@ -2,7 +2,7 @@ name: Apply prettier
 
 on:
   pull_request:
-    branches: [main]
+    branches: [master]
 
 jobs:
   prettier:
@@ -17,7 +17,8 @@ jobs:
 
       - name: Prettify code
         run: |
-          make cmd  "npx prettier --write --plugin prettier-plugin-svelte ."
+          make build
+          make lint
 
      - name: Check for modified files
         id: git-check

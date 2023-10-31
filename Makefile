@@ -7,7 +7,13 @@ args=$(filter-out $@,$(MAKECMDGOALS))
 .PHONY: setup
 ## Setup development enviroment.
 setup:
+	@git config --local core.hookPath .githooks
 	$(MAKE) build
+
+.PHONY: lint
+## Lint code
+lint: 
+	@$(compose) run --rm ui lint
 
 .PHONY: start
 ## Start docker services
