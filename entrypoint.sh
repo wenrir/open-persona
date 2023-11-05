@@ -6,21 +6,29 @@ if [[ "$1" == "dev" ]];
 then
     cd /app
     echo "=== Start npm development env ==="
-    npm install
-    npm run dev
+    yarn install
+    yarn dev
 elif [[ "$1" == "build" ]];
 then
    cd /app
     echo "=== build component ==="
-   npm install
-   npm run build
+   yarn install
+   yarn build
    exit
 elif [[ "$1" == "lint" ]];
 then
    cd /app
    echo "=== Lint ==="
-   npm install
-   npx prettier --write --plugin prettier-plugin-svelte .
+   yarn install
+   yarn lint
+   exit
+
+elif [[ "$1" == "test" ]];
+then
+   cd /app
+   echo "=== Test ==="
+   yarn install
+   yarn test
    exit
 else
    if [ "${1#-}" != "${1}" ] || [ -z "$(command -v "${1}")" ] || { [ -f "${1}" ] && ! [ -x "${1}" ]; }; then
