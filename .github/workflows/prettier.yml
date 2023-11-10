@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [master]
 
+concurrency:
+  group: prettier-${{ github.event.pull_request.number || github.ref }}
+  
 jobs:
   prettier:
     runs-on: ubuntu-latest
