@@ -1,0 +1,21 @@
+name: Run Tests
+
+on:
+  pull_request:
+    branches: [master]
+
+concurrency:
+  group: test-${{ github.event.pull_request.number || github.ref }}
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Test code
+        run: |
+          make build
+          make test

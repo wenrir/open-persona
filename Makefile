@@ -15,6 +15,11 @@ setup:
 lint: 
 	@$(compose) run --rm ui lint
 
+.PHONY: test
+## test code
+test:
+	@$(compose) run --rm ui test
+
 .PHONY: start
 ## Start docker services
 start:
