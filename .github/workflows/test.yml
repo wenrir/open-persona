@@ -6,6 +6,7 @@ on:
 
 concurrency:
   group: test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   prettier:
@@ -17,5 +18,6 @@ jobs:
           ref: ${{ github.head_ref }}
       - name: Test code
         run: |
+          echo "Start testing..."
           make build-test
           make test
