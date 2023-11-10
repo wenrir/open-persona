@@ -2,13 +2,13 @@ version: "3"
 
 services:
   ui:
-    image: persona
-    container_name: ui
+    image: ${BUILD_TARGET_ui:-base_ui}
+    container_name: ${BUILD_TARGET_ui:-base_ui}
     command: dev
     build:
       context: .
       dockerfile: Dockerfile
-      target: base
+      target: ${BUILD_TARGET:-base}
     #expose:
     #  - "5050"
     ports:
