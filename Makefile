@@ -22,7 +22,7 @@ test:
 
 .PHONY: start
 ## Start docker services
-start:
+start: build
 	@$(compose) up --detach
 
 .PHONY: cmd
