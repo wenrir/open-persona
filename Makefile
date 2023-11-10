@@ -12,7 +12,7 @@ setup:
 
 .PHONY: lint
 ## Lint code
-lint: 
+lint: build
 	@$(compose) run --rm ui lint
 
 .PHONY: test
@@ -27,7 +27,7 @@ start: build
 
 .PHONY: cmd
 ## Run specific command inside ui service
-cmd:
+cmd: build
 	@$(compose) run --rm ui $(args)
 
 .PHONY: stop
