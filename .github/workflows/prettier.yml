@@ -15,19 +15,17 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - name: Prettify code
-        run: |
-          make build
-          make lint
       - name: Check for modified files
         id: git-check
         run: |
+          echo "modified=$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)"
           echo "modified=$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)" >> $GITHUB_OUTPUT
-      - name: Push changes
+      - name: Prettify code
         if: steps.git-check.outputs.modified == 'true'
         run: |
-          git config --global user.name 'wenrir'
-          git config --global user.email 'wenrir@users.noreply.github.com'
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git commit -am "Apply formatting to PR"
-          git push
+          make build
+          make lint
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        if: steps.git-check.outputs.modified == 'true'
+        with:
+          commit_message: Prettier
