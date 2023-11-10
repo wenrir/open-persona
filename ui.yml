@@ -2,8 +2,8 @@ version: "3"
 
 services:
   ui:
-    image: ${BUILD_TARGET_ui:-ui}
-    container_name: ${BUILD_TARGET_ui:-ui}
+    image: ${BUILD_TARGET_ui:-base_ui}
+    container_name: ${BUILD_TARGET_ui:-base_ui}
     command: dev
     build:
       context: .
