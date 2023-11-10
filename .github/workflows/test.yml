@@ -17,5 +17,5 @@ jobs:
           ref: ${{ github.head_ref }}
       - name: Test code
         run: |
-          make build
+          make build-test
           make test

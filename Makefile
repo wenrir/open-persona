@@ -18,7 +18,7 @@ lint:
 .PHONY: test
 ## test code
 test:
-	@$(compose) run --rm ui test
+	@BUILD_TARGET=test_ui $(compose) run --rm ui test
 
 .PHONY: start
 ## Start docker services
@@ -36,9 +36,14 @@ stop:
 	@$(compose) down --rmi all --volumes --remove-orphans
 
 .PHONY: build
-## Build all development images
+## Build development images
 build:
-	@$(compose) build
+	@BUILD_TARGET=base_ui $(compose) build
+
+.PHONY: build-test
+## Build test image
+build-test:
+	@BUILD_TARGET=test_ui $(compose) build
 
 .PHONY: clean
 ## Clean development images
