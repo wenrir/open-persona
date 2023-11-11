@@ -28,6 +28,7 @@ then
    cd /app
    echo "=== Test ==="
    yarn install
+   yarn check
    yarn test
    exit
 else
