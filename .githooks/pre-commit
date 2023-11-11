@@ -3,7 +3,7 @@
 exec < /dev/tty
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
-make cmd "npx prettier --write --plugin prettier-plugin-svelte ."
+make test
 exit_status=$?
 if [ "$exit_status" -ne 0 ]; then
   echo "Make test or check did not pass please resolve issues and try again."
